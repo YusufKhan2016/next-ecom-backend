@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "code": "USR000001",
+    "name": "Rafsun",
+    "email": "hasanrafsun123@gmail.com",
+    "phone": "01647724824",
+    "password":"123",
+    "status":  1
+  }
+]
