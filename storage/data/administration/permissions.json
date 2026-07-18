@@ -1,0 +1,89 @@
+[
+    {
+        "name": "dashboard",
+        "permissions": [
+            "view",
+            "create",
+            "edit",
+            "delete"
+        ],
+        "guard_name": "web"
+    },
+
+    {
+        "name": "user",
+        "permissions": [
+            "view",
+            "create",
+            "edit",
+            "delete"
+        ],
+        "guard_name": "web"
+    },
+
+    {
+        "name": "role",
+        "permissions": [
+            "view",
+            "create",
+            "edit",
+            "delete"
+        ],
+        "guard_name": "web"
+    },
+
+    {
+        "name": "product",
+        "permissions": [
+            "view",
+            "create",
+            "edit",
+            "delete"
+        ],
+        "guard_name": "web"
+    },
+
+    {
+        "name": "category",
+        "permissions": [
+            "view",
+            "create",
+            "edit",
+            "delete"
+        ],
+        "guard_name": "web"
+    },
+
+    {
+        "name": "brand",
+        "permissions": [
+            "view",
+            "create",
+            "edit",
+            "delete"
+        ],
+        "guard_name": "web"
+    },
+
+    {
+        "name": "order",
+        "permissions": [
+            "view",
+            "create",
+            "edit",
+            "delete"
+        ],
+        "guard_name": "web"
+    },
+
+    {
+        "name": "customer",
+        "permissions": [
+            "view",
+            "create",
+            "edit",
+            "delete"
+        ],
+        "guard_name": "web"
+    }
+]

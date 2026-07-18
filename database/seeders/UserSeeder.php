@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
         $jsonString = File::get(storage_path('data/administration/users.json'));
 
         $data = json_decode($jsonString, true);
+        
         foreach ($data as $item) {
             $users = [];
             $item['password'] = Hash::make($item['password']);
