@@ -1,0 +1,12 @@
+[
+    {
+        "name":"Super Admin", 
+        "guard_name": "web",
+        "all_permissions": true
+    },
+    {
+        "name":"Admin", 
+        "guard_name": "web",
+        "all_permissions": false
+    }
+]

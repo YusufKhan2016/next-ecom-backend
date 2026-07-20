@@ -6,10 +6,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:sanctum')->prefix('/auth')->group(function () {
 
-    Route::get('/user', [AuthController::class, 'me']);
-    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/get-user', [AuthController::class, 'getUser']);
+    Route::get('/logout', [AuthController::class, 'logout']);
     Route::post('/change-password', [AuthController::class, 'changePassword']);
     
 });
