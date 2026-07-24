@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -8,8 +9,19 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->prefix('/auth')->group(function () {
 
+    // ==========================
+    // user management
+    // ==========================
     Route::get('/get-user', [AuthController::class, 'getUser']);
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::post('/change-password', [AuthController::class, 'changePassword']);
-    
+
+    // ==========================
+    // role management
+    // ==========================
+    Route::get('/get-roles-list', [RoleController::class, 'index']);
+    Route::post('/save-update-role', [RoleController::class, 'store']);
+    Route::get('/get-role-by-id/{role}', [RoleController::class, 'show']);
+    Route::delete('/delete-role/{id}', [RoleController::class, 'destroy']);
+
 });

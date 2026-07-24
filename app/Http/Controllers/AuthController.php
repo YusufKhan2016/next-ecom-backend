@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function login(Request $request) 
+    public function login(Request $request)
     {
         $request->validate([
             'email' => 'required|email',
@@ -47,7 +47,7 @@ class AuthController extends Controller
         ], 200);
     }
 
-    public function getUser(Request $request) 
+    public function getUser(Request $request)
     {
         $user = $request->user();
 
@@ -69,14 +69,13 @@ class AuthController extends Controller
                     ->pluck('name')
                     ->values()
             ]
-            
+
         ], 200);
     }
 
-    public function logout(Request $request) 
+    public function logout(Request $request)
     {
         $user = $request->user();
-        
         $user->currentAccessToken()->delete();
 
         return response()->json([
@@ -85,8 +84,32 @@ class AuthController extends Controller
         ],200);
     }
 
-    public function changePassword(Request $request) 
+    public function changePassword(Request $request)
     {
+        $request->validate([
+            'current_password' => 'required',
+            'password' => 'required|string|min:3|confirmed'
+        ]);
 
+        $user = $request->user();
+
+        if(!Hash::check($request->current_password, $user->password))
+        {
+            return response()->json([
+                'success' => false,
+                'message' => 'Current password is incorrect.'
+            ], 422);
+        }
+
+        $user->update([
+            'password' => Hash::make($request->password)
+        ]);
+
+        $user->tokens()->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Password changed successfully. Please login again.'
+        ], 200);
     }
 }
