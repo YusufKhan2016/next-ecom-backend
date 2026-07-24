@@ -56,6 +56,10 @@ class RoleController extends Controller
             } else {
                 $role = Role::findOrFail($request->role_id);
 
+                if($role->id == 1) {
+                    throw new \Exception("Super Admin cannot be modified.");
+                }
+
                 $role->update($data);
             }
 
@@ -101,7 +105,7 @@ class RoleController extends Controller
         try {
             $role = Role::findOrFail($id);
 
-            if($role->name == 'Super Admin') {
+            if($role->id == 1) {
                 throw new \Exception("Super Admin cannot be deleted.");
             }
 
