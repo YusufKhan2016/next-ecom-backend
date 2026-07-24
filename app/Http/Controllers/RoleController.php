@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 use function Pest\Laravel\json;
@@ -28,7 +29,7 @@ class RoleController extends Controller
                 'success' => false,
                 'message' => $th->getMessage(),
                 'data' => []
-            ], 500);
+            ]);
         }
 
     }
@@ -42,7 +43,9 @@ class RoleController extends Controller
                 'string',
                 'max:255',
                 Rule::unique('roles')->ignore($request->role_id),
-            ]
+            ],
+            'permission_ids' => 'nullable|array',
+            'permission_ids.*' => 'exists:permissions,id'
         ]);
 
         try {
@@ -63,6 +66,9 @@ class RoleController extends Controller
                 $role->update($data);
             }
 
+            $permissions = Permission::whereIn('id', $request->permission_ids)->get();
+            $role->syncPermissions($permissions ?? []);
+
             return response()->json([
                 'success' => true,
                 'message' => 'Role Saved Successfully.',
@@ -75,7 +81,7 @@ class RoleController extends Controller
                 'success' => false,
                 'message' => $th->getMessage(),
                 'data' => null
-            ], 500);
+            ]);
         }
     }
 
@@ -83,6 +89,8 @@ class RoleController extends Controller
     public function show(Role $role)
     {
         try {
+
+            $role->load('permissions:id,name');
 
             return response()->json([
                 'success' => true,
@@ -120,7 +128,7 @@ class RoleController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => $th->getMessage(),
-            ], 500);
+            ]);
         }
     }
 }
