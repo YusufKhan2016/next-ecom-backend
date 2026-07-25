@@ -119,6 +119,12 @@ class RoleController extends Controller
                 throw new \Exception("Super Admin cannot be deleted.");
             }
 
+            if ($role->users()->exists()) {
+                throw new Exception(
+                    'This role is assigned to users. Remove it from all users first.'
+                );
+            }
+
             $role->delete();
 
             return response()->json([
