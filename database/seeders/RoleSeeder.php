@@ -24,9 +24,10 @@ class RoleSeeder extends Seeder
         foreach ($data as $item) {
             $roleData = [
                 'name' => $item['name'],
+                'code' => $item['code'],
                 'guard_name' => $item['guard_name']
             ];
-            
+
             $role = Role::firstOrCreate($roleData);
 
             if($item['all_permissions'] == true)

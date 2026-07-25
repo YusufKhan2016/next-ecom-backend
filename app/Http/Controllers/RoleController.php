@@ -16,7 +16,7 @@ class RoleController extends Controller
     public function index()
     {
         try {
-            $roleData = Role::latest()->get();
+            $roleData = Role::latest()->with('permissions:id,name')->get();
 
             return response()->json([
                 'success' => true,
@@ -55,6 +55,8 @@ class RoleController extends Controller
             ];
 
             if(!$request->filled('role_id')) {
+                $data['code'] = $this->generateCode(Role::class, "ROL");
+
                 $role = Role::create($data);
             } else {
                 $role = Role::findOrFail($request->role_id);

@@ -49,7 +49,15 @@ class AuthController extends Controller
 
     public function getUser(Request $request)
     {
-        $user = $request->user();
+        $user = auth()->user();
+        $permissions = $user
+            ->getAllPermissions()
+            ->pluck('name')
+            ->values();
+        $role = $user
+            ->getRoleNames()
+            ->values()
+            ->first();  
 
         return response()->json([
             'success' => true,
@@ -63,11 +71,8 @@ class AuthController extends Controller
                     'phone' => $user->phone,
                     'status' => $user->status,
                 ],
-                'roles' => $user->getRoleNames()->values(),
-                'permissions' => $user
-                    ->getAllPermissions()
-                    ->pluck('name')
-                    ->values()
+                'role' => $role,
+                'permissions' => $permissions
             ]
 
         ], 200);
@@ -75,7 +80,7 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        $user = $request->user();
+        $user = auth()->user();
         $user->currentAccessToken()->delete();
 
         return response()->json([
@@ -91,7 +96,7 @@ class AuthController extends Controller
             'password' => 'required|string|min:3|confirmed'
         ]);
 
-        $user = $request->user();
+        $user = auth()->user();
 
         if(!Hash::check($request->current_password, $user->password))
         {

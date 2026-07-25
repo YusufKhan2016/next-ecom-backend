@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('guard_name');
             $table->timestamps();
-
+            $table->softDeletes();
             $table->unique(['name', 'guard_name']);
         });
 
@@ -42,8 +42,10 @@ return new class extends Migration
                 $table->index($columnNames['team_foreign_key'], 'roles_team_foreign_key_index');
             }
             $table->string('name');
+            $table->string('code');
             $table->string('guard_name');
             $table->timestamps();
+            $table->softDeletes();
             if ($teams || config('permission.testing')) {
                 $table->unique([$columnNames['team_foreign_key'], 'name', 'guard_name']);
             } else {

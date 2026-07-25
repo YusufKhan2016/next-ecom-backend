@@ -1,11 +1,13 @@
 [
     {
-        "name":"Super Admin", 
+        "name":"Super Admin",
+        "code":"RL0001",
         "guard_name": "web",
         "all_permissions": true
     },
     {
-        "name":"Admin", 
+        "name":"Admin",
+        "code":"RL0002",
         "guard_name": "web",
         "all_permissions": false
     }
