@@ -28,6 +28,15 @@ class AuthController extends Controller
         $user->tokens()->delete();
         $token = $user->createToken('auth_token')->plainTextToken;
 
+        $permissions = $user
+            ->getAllPermissions()
+            ->pluck('name')
+            ->values();
+        $role = $user
+            ->getRoleNames()
+            ->values()
+            ->first();
+
         return response()->json([
             'success' => true,
             'message' => 'Login Successful',
@@ -41,8 +50,8 @@ class AuthController extends Controller
                     'phone' => $user->phone,
                     'status' => $user->status,
                 ],
-                'roles' => $user->getRoleNames()->values(),
-                'permissions' => $user->getAllPermissions()->pluck('name')->values()
+                'role' => $role,
+                'permissions' => $permissions
             ]
         ], 200);
     }
@@ -57,7 +66,7 @@ class AuthController extends Controller
         $role = $user
             ->getRoleNames()
             ->values()
-            ->first();  
+            ->first();
 
         return response()->json([
             'success' => true,
