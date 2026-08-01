@@ -2,7 +2,7 @@
     {
         "title": "Dashboard",
         "slug": "dashboard",
-        "icon": "LayoutDashboard",
+        "icon": "layout-dashboard",
         "route": "/dashboard",
         "permission": "dashboard.view"
     },
@@ -10,17 +10,19 @@
     {
         "title": "Administration",
         "slug": "administration",
-        "icon": "Settings",
+        "icon": "layout-dashboard",
         "children": [
             {
                 "title": "Users",
                 "slug": "user",
+                "icon": "layout-dashboard",
                 "route": "/administration/users",
                 "permission": "user.view"
             },
             {
                 "title": "Roles",
                 "slug": "role",
+                "icon": "layout-dashboard",
                 "route": "/administration/roles",
                 "permission": "role.view"
             }
@@ -30,23 +32,26 @@
     {
         "title": "Products",
         "slug": "products",
-        "icon": "Package",
+        "icon": "layout-dashboard",
         "children": [
             {
                 "title": "Product List",
                 "slug": "product",
+                "icon": "layout-dashboard",
                 "route": "/products",
                 "permission": "product.view"
             },
             {
                 "title": "Categories",
                 "slug": "category",
+                "icon": "layout-dashboard",
                 "route": "/categories",
                 "permission": "category.view"
             },
             {
                 "title": "Brands",
                 "slug": "brand",
+                "icon": "layout-dashboard",
                 "route": "/brands",
                 "permission": "brand.view"
             }
@@ -56,17 +61,19 @@
     {
         "title": "Sales",
         "slug": "sales",
-        "icon": "ShoppingCart",
+        "icon": "layout-dashboard",
         "children": [
             {
                 "title": "Orders",
                 "slug": "order",
+                "icon": "layout-dashboard",
                 "route": "/orders",
                 "permission": "order.view"
             },
             {
                 "title": "Customers",
                 "slug": "customer",
+                "icon": "layout-dashboard",
                 "route": "/customers",
                 "permission": "customer.view"
             }
@@ -76,17 +83,19 @@
     {
         "title": "Marketing",
         "slug": "marketing",
-        "icon": "BadgePercent",
+        "icon": "layout-dashboard",
         "children": [
             {
                 "title": "Coupons",
                 "slug": "coupon",
+                "icon": "layout-dashboard",
                 "route": "/coupons",
                 "permission": "coupon.view"
             },
             {
                 "title": "Banners",
                 "slug": "banner",
+                "icon": "layout-dashboard",
                 "route": "/banners",
                 "permission": "banner.view"
             }
@@ -96,7 +105,7 @@
     {
         "title": "Settings",
         "slug": "settings",
-        "icon": "Cog",
+        "icon": "layout-dashboard",
         "route": "/settings",
         "permission": "setting.view"
     }
