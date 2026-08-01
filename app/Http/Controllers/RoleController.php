@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -94,10 +95,25 @@ class RoleController extends Controller
 
             $role->load('permissions:id,name');
 
+            $permissions = $role->permissions->pluck('name')->values();
+
+            $menus = Menu::whereNull('parent_id')
+                ->with('children')
+                ->orderBy('sort_order')
+                ->get();
+
+            $filteredMenus = $this->filterMenus($menus, $permissions);
+            
             return response()->json([
                 'success' => true,
                 'message' => 'Fetched the role data successfully.',
-                'data' => $role
+                'data' => [
+                    'id' => $role->id,
+                    'name' => $role->name,
+                    'code' => $role->code,
+                    'permissions' => $role->permissions->pluck('name')->toArray(),
+                    'menus' => $filteredMenus
+                ]
             ]);
 
         } catch (\Throwable $th) {

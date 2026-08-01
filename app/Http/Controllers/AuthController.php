@@ -42,7 +42,7 @@ class AuthController extends Controller
             ->values()
             ->first();
 
-        $menus = Menu::where('parent_id', null)
+        $menus = Menu::whereNull('parent_id')
             ->with('children')
             ->orderBy('sort_order')
             ->get();
@@ -77,7 +77,7 @@ class AuthController extends Controller
             ->getAllPermissions()
             ->pluck('name')
             ->values();
-            
+
         $role = $user
             ->getRoleNames()
             ->values()
@@ -113,6 +113,7 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $user = auth()->user();
+
         $user->currentAccessToken()->delete();
 
         return response()->json([

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 
@@ -16,10 +17,22 @@ class PermissionController extends Controller
                 'id', 'name'
             )->orderBy('name')->get();
 
+            $permissions = $permissions->pluck('name')->values();
+
+            $menus = Menu::whereNull('parent_id')
+                ->with('children')
+                ->orderBy('sort_order')
+                ->get();
+
+            $filteredMenus = $this->filterMenus($menus, $permissions);
+
             return response()->json([
                 'success' => true,
                 'message' => 'Permissions fetched successfully.',
-                'data' => $permissions
+                'data' => [
+                    'permissions' => $permissions,
+                    'menus' => $filteredMenus
+                ]
             ]);
 
         } catch (\Throwable $th) {
