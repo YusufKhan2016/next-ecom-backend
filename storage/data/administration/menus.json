@@ -1,0 +1,103 @@
+[
+    {
+        "title": "Dashboard",
+        "slug": "dashboard",
+        "icon": "LayoutDashboard",
+        "route": "/dashboard",
+        "permission": "dashboard.view"
+    },
+
+    {
+        "title": "Administration",
+        "slug": "administration",
+        "icon": "Settings",
+        "children": [
+            {
+                "title": "Users",
+                "slug": "user",
+                "route": "/administration/users",
+                "permission": "user.view"
+            },
+            {
+                "title": "Roles",
+                "slug": "role",
+                "route": "/administration/roles",
+                "permission": "role.view"
+            }
+        ]
+    },
+
+    {
+        "title": "Products",
+        "slug": "products",
+        "icon": "Package",
+        "children": [
+            {
+                "title": "Product List",
+                "slug": "product",
+                "route": "/products",
+                "permission": "product.view"
+            },
+            {
+                "title": "Categories",
+                "slug": "category",
+                "route": "/categories",
+                "permission": "category.view"
+            },
+            {
+                "title": "Brands",
+                "slug": "brand",
+                "route": "/brands",
+                "permission": "brand.view"
+            }
+        ]
+    },
+
+    {
+        "title": "Sales",
+        "slug": "sales",
+        "icon": "ShoppingCart",
+        "children": [
+            {
+                "title": "Orders",
+                "slug": "order",
+                "route": "/orders",
+                "permission": "order.view"
+            },
+            {
+                "title": "Customers",
+                "slug": "customer",
+                "route": "/customers",
+                "permission": "customer.view"
+            }
+        ]
+    },
+
+    {
+        "title": "Marketing",
+        "slug": "marketing",
+        "icon": "BadgePercent",
+        "children": [
+            {
+                "title": "Coupons",
+                "slug": "coupon",
+                "route": "/coupons",
+                "permission": "coupon.view"
+            },
+            {
+                "title": "Banners",
+                "slug": "banner",
+                "route": "/banners",
+                "permission": "banner.view"
+            }
+        ]
+    },
+
+    {
+        "title": "Settings",
+        "slug": "settings",
+        "icon": "Cog",
+        "route": "/settings",
+        "permission": "setting.view"
+    }
+]

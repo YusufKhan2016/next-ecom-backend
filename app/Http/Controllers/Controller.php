@@ -6,6 +6,38 @@ use Illuminate\Support\Str;
 
 abstract class Controller
 {
+    public function filterMenus($menus, $permissions)
+    {
+        // dd($permissions);
+        $permissions = collect($permissions)->toArray();
+
+        return $menus
+            ->map(function ($menu) use ($permissions) {
+
+                if ($menu->children->count()) {
+                    $menu->setRelation(
+                        'children',
+                        $this->filterMenus($menu->children, $permissions)
+                    );
+                }
+
+                $hasPermission = !$menu->permission || in_array($menu->permission, $permissions);
+
+                if ($hasPermission || $menu->children->count()) {
+
+                    if ($menu->children->count() == 0 && $menu->route == 0) {
+                        return null;
+                    }
+
+                    return $menu;
+                }
+
+                return null;
+            })
+            ->filter()
+            ->values();
+    }
+
     public function generateSlug($model, $title, $id = null)
     {
         $slug = Str::slug($title);

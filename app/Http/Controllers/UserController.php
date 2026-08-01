@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -89,18 +90,26 @@ class UserController extends Controller
     public function show(string $id)
     {
         try {
-            
+
             $user = User::findOrFail($id);
             $user->load('roles');
             $role = $user->roles->first();
             $permissions = $user->getAllPermissions()
-                ->map(function ($permission) {
-                    return [
-                        'id' => $permission->id,
-                        'name' => $permission->name,
-                    ];
-                })
+                // ->map(function ($permission) {
+                //     return [
+                //         // 'id' => $permission->id,
+                //         'name' => $permission->name,
+                //     ];
+                // })
+                ->pluck('name')
                 ->values();
+
+            $menus = Menu::where('parent_id', null)
+                ->with('children')
+                ->orderBy('sort_order')
+                ->get();
+
+            $menus = $this->filterMenus($menus, $permissions);
 
             return response()->json([
                 'success' => true,
@@ -118,7 +127,8 @@ class UserController extends Controller
                         'code' => $role->code,
                         'guard_name' => $role->guard_name,
                     ],
-                    'permisssions' => $permissions
+                    'permisssions' => $permissions,
+                    'menus' => $menus
                 ]
             ]);
 

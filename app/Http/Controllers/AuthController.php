@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
+use function PHPSTORM_META\map;
+
 class AuthController extends Controller
 {
+
     public function login(Request $request)
     {
         $request->validate([
@@ -32,10 +36,19 @@ class AuthController extends Controller
             ->getAllPermissions()
             ->pluck('name')
             ->values();
+
         $role = $user
             ->getRoleNames()
             ->values()
             ->first();
+
+        $menus = Menu::where('parent_id', null)
+            ->with('children')
+            ->orderBy('sort_order')
+            ->get();
+
+
+        $filteredMenus = $this->filterMenus($menus, $permissions);
 
         return response()->json([
             'success' => true,
@@ -51,7 +64,8 @@ class AuthController extends Controller
                     'status' => $user->status,
                 ],
                 'role' => $role,
-                'permissions' => $permissions
+                'permissions' => $permissions,
+                'menus' => $filteredMenus
             ]
         ], 200);
     }
@@ -63,10 +77,18 @@ class AuthController extends Controller
             ->getAllPermissions()
             ->pluck('name')
             ->values();
+            
         $role = $user
             ->getRoleNames()
             ->values()
             ->first();
+
+        $menus = Menu::where('parent_id', null)
+            ->with('children')
+            ->orderBy('sort_order')
+            ->get();
+
+        $filteredMenus = $this->filterMenus($menus, $permissions);
 
         return response()->json([
             'success' => true,
@@ -81,7 +103,8 @@ class AuthController extends Controller
                     'status' => $user->status,
                 ],
                 'role' => $role,
-                'permissions' => $permissions
+                'permissions' => $permissions,
+                'menus' => $filteredMenus
             ]
 
         ], 200);
@@ -126,4 +149,5 @@ class AuthController extends Controller
             'message' => 'Password changed successfully. Please login again.'
         ], 200);
     }
+
 }
