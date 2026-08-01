@@ -2,28 +2,28 @@
     {
         "title": "Dashboard",
         "slug": "dashboard",
-        "icon": "layout-dashboard",
-        "route": "/dashboard",
+        "icon": "LayoutDashboard",
+        "route": "/admin/dashboard",
         "permission": "dashboard.view"
     },
 
     {
         "title": "Administration",
         "slug": "administration",
-        "icon": "layout-dashboard",
+        "icon": "LayoutDashboard",
         "children": [
             {
                 "title": "Users",
                 "slug": "user",
-                "icon": "layout-dashboard",
-                "route": "/administration/users",
+                "icon": "LayoutDashboard",
+                "route": "/admin/administration/users",
                 "permission": "user.view"
             },
             {
                 "title": "Roles",
                 "slug": "role",
-                "icon": "layout-dashboard",
-                "route": "/administration/roles",
+                "icon": "LayoutDashboard",
+                "route": "/admin/administration/roles",
                 "permission": "role.view"
             }
         ]
@@ -32,27 +32,27 @@
     {
         "title": "Products",
         "slug": "products",
-        "icon": "layout-dashboard",
+        "icon": "LayoutDashboard",
         "children": [
             {
                 "title": "Product List",
                 "slug": "product",
-                "icon": "layout-dashboard",
-                "route": "/products",
+                "icon": "LayoutDashboard",
+                "route": "/admin/products",
                 "permission": "product.view"
             },
             {
                 "title": "Categories",
                 "slug": "category",
-                "icon": "layout-dashboard",
-                "route": "/categories",
+                "icon": "LayoutDashboard",
+                "route": "/admin/categories",
                 "permission": "category.view"
             },
             {
                 "title": "Brands",
                 "slug": "brand",
-                "icon": "layout-dashboard",
-                "route": "/brands",
+                "icon": "LayoutDashboard",
+                "route": "/admin/brands",
                 "permission": "brand.view"
             }
         ]
@@ -61,20 +61,20 @@
     {
         "title": "Sales",
         "slug": "sales",
-        "icon": "layout-dashboard",
+        "icon": "LayoutDashboard",
         "children": [
             {
                 "title": "Orders",
                 "slug": "order",
-                "icon": "layout-dashboard",
-                "route": "/orders",
+                "icon": "LayoutDashboard",
+                "route": "/admin/orders",
                 "permission": "order.view"
             },
             {
                 "title": "Customers",
                 "slug": "customer",
-                "icon": "layout-dashboard",
-                "route": "/customers",
+                "icon": "LayoutDashboard",
+                "route": "/admin/customers",
                 "permission": "customer.view"
             }
         ]
@@ -83,20 +83,20 @@
     {
         "title": "Marketing",
         "slug": "marketing",
-        "icon": "layout-dashboard",
+        "icon": "LayoutDashboard",
         "children": [
             {
                 "title": "Coupons",
                 "slug": "coupon",
-                "icon": "layout-dashboard",
-                "route": "/coupons",
+                "icon": "LayoutDashboard",
+                "route": "/admin/coupons",
                 "permission": "coupon.view"
             },
             {
                 "title": "Banners",
                 "slug": "banner",
-                "icon": "layout-dashboard",
-                "route": "/banners",
+                "icon": "LayoutDashboard",
+                "route": "/admin/banners",
                 "permission": "banner.view"
             }
         ]
@@ -105,8 +105,8 @@
     {
         "title": "Settings",
         "slug": "settings",
-        "icon": "layout-dashboard",
-        "route": "/settings",
+        "icon": "LayoutDashboard",
+        "route": "/admin/settings",
         "permission": "setting.view"
     }
 ]
