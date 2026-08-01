@@ -8,7 +8,6 @@ abstract class Controller
 {
     public function filterMenus($menus, $permissions)
     {
-        // dd($permissions);
         $permissions = collect($permissions)->toArray();
 
         return $menus
@@ -24,11 +23,9 @@ abstract class Controller
                 $hasPermission = !$menu->permission || in_array($menu->permission, $permissions);
 
                 if ($hasPermission || $menu->children->count()) {
-
                     if ($menu->children->count() == 0 && $menu->route == 0) {
                         return null;
                     }
-
                     return $menu;
                 }
 
