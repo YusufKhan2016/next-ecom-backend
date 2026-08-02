@@ -1,112 +1,34 @@
 [
-    {
-        "title": "Dashboard",
-        "slug": "dashboard",
-        "icon": "LayoutDashboard",
-        "route": "/admin/dashboard",
-        "permission": "dashboard.view"
-    },
+    { "title": "Dashboard", "slug": "dashboard", "icon": "LayoutDashboard", "route": "/admin/dashboard", "permission": "dashboard.view" },
 
-    {
-        "title": "Administration",
-        "slug": "administration",
-        "icon": "LayoutDashboard",
+    { "title": "Administration", "slug": "administration", "icon": "ShieldPlus",
         "children": [
-            {
-                "title": "Users",
-                "slug": "user",
-                "icon": "LayoutDashboard",
-                "route": "/admin/administration/users",
-                "permission": "user.view"
-            },
-            {
-                "title": "Roles",
-                "slug": "role",
-                "icon": "LayoutDashboard",
-                "route": "/admin/administration/roles",
-                "permission": "role.view"
-            }
+            { "title": "Users", "slug": "user", "icon": "UserCog", "route": "/admin/administration/users", "permission": "user.view" },
+            { "title": "Roles", "slug": "role", "icon": "ShieldUser", "route": "/admin/administration/roles", "permission": "role.view" }
         ]
     },
 
-    {
-        "title": "Products",
-        "slug": "products",
-        "icon": "LayoutDashboard",
+    { "title": "Products", "slug": "products", "icon": "LayoutDashboard",
         "children": [
-            {
-                "title": "Product List",
-                "slug": "product",
-                "icon": "LayoutDashboard",
-                "route": "/admin/products",
-                "permission": "product.view"
-            },
-            {
-                "title": "Categories",
-                "slug": "category",
-                "icon": "LayoutDashboard",
-                "route": "/admin/categories",
-                "permission": "category.view"
-            },
-            {
-                "title": "Brands",
-                "slug": "brand",
-                "icon": "LayoutDashboard",
-                "route": "/admin/brands",
-                "permission": "brand.view"
-            }
+            { "title": "Product List", "slug": "product", "icon": "LayoutDashboard", "route": "/admin/products", "permission": "product.view" },
+            { "title": "Categories", "slug": "category", "icon": "LayoutDashboard", "route": "/admin/categories", "permission": "category.view" },
+            { "title": "Brands", "slug": "brand", "icon": "LayoutDashboard", "route": "/admin/brands", "permission": "brand.view" }
         ]
     },
 
-    {
-        "title": "Sales",
-        "slug": "sales",
-        "icon": "LayoutDashboard",
+    { "title": "Sales", "slug": "sales", "icon": "LayoutDashboard",
         "children": [
-            {
-                "title": "Orders",
-                "slug": "order",
-                "icon": "LayoutDashboard",
-                "route": "/admin/orders",
-                "permission": "order.view"
-            },
-            {
-                "title": "Customers",
-                "slug": "customer",
-                "icon": "LayoutDashboard",
-                "route": "/admin/customers",
-                "permission": "customer.view"
-            }
+            { "title": "Orders", "slug": "order", "icon": "LayoutDashboard", "route": "/admin/orders", "permission": "order.view" },
+            { "title": "Customers", "slug": "customer", "icon": "LayoutDashboard", "route": "/admin/customers", "permission": "customer.view" }
         ]
     },
 
-    {
-        "title": "Marketing",
-        "slug": "marketing",
-        "icon": "LayoutDashboard",
+    { "title": "Marketing", "slug": "marketing", "icon": "LayoutDashboard",
         "children": [
-            {
-                "title": "Coupons",
-                "slug": "coupon",
-                "icon": "LayoutDashboard",
-                "route": "/admin/coupons",
-                "permission": "coupon.view"
-            },
-            {
-                "title": "Banners",
-                "slug": "banner",
-                "icon": "LayoutDashboard",
-                "route": "/admin/banners",
-                "permission": "banner.view"
-            }
+            { "title": "Coupons", "slug": "coupon", "icon": "LayoutDashboard", "route": "/admin/coupons", "permission": "coupon.view" },
+            { "title": "Banners", "slug": "banner", "icon": "LayoutDashboard", "route": "/admin/banners", "permission": "banner.view" }
         ]
     },
 
-    {
-        "title": "Settings",
-        "slug": "settings",
-        "icon": "LayoutDashboard",
-        "route": "/admin/settings",
-        "permission": "setting.view"
-    }
+    { "title": "Settings", "slug": "settings", "icon": "LayoutDashboard", "route": "/admin/settings", "permission": "setting.view" }
 ]
