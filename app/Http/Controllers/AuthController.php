@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-use function PHPSTORM_META\map;
-
 class AuthController extends Controller
 {
 
@@ -67,7 +65,7 @@ class AuthController extends Controller
                 'permissions' => $permissions,
                 'menus' => $filteredMenus
             ]
-        ], 200);
+        ]);
     }
 
     public function getUser(Request $request)
