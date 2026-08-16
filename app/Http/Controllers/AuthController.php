@@ -133,7 +133,8 @@ class AuthController extends Controller
         {
             return response()->json([
                 'success' => false,
-                'message' => 'Current password is incorrect.'
+                'message
+                ' => 'Current password is incorrect.'
             ], 422);
         }
 
