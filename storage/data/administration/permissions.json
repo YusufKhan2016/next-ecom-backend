@@ -60,8 +60,14 @@
     },
 
     {
-        "name": "setting",
-        "permissions": ["view", "edit"],
+        "name": "general",
+        "permissions": ["view", "create", "edit", "delete"],
+        "guard_name": "web"
+    },
+
+    {
+        "name": "account",
+        "permissions": ["view", "create", "edit", "delete"],
         "guard_name": "web"
     }
 ]

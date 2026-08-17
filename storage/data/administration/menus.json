@@ -30,5 +30,11 @@
         ]
     },
 
-    { "title": "Settings", "slug": "settings", "icon": "LayoutDashboard", "route": "/admin/settings", "permission": "setting.view" }
+    { "title": "Settings", "slug": "settings", "icon": "Settings",
+        "children": [
+            { "title": "General", "slug": "general", "icon": "SlidersHorizontal", "route": "/admin/settings/general", "permission": "general.view" },
+            { "title": "Account", "slug": "account", "icon": "UserCog", "route": "/admin/settings/account", "permission": "account.view" }
+        ]
+    }
+
 ]
