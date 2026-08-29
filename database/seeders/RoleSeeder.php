@@ -25,6 +25,7 @@ class RoleSeeder extends Seeder
             $roleData = [
                 'name' => $item['name'],
                 'code' => $item['code'],
+                'description' => $item['description'],
                 'guard_name' => $item['guard_name']
             ];
 

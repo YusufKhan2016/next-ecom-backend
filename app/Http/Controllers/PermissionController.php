@@ -13,26 +13,29 @@ class PermissionController extends Controller
     {
         try {
 
-            $permissions = Permission::select(
-                'id', 'name'
-            )->orderBy('name')->get();
+            $permissions = Permission::select('id', 'name', 'guard_name')
+                ->get()
+                ->groupBy(function ($permission) {
+                    return explode('.', $permission->name)[0];
+                })->toArray();
 
-            $permissions = $permissions->pluck('name')->values();
+//            $permissions = $permissions->pluck('name')->values();
 
-            $menus = Menu::whereNull('parent_id')
-                ->with('children')
-                ->orderBy('sort_order')
-                ->get();
+//            $menus = Menu::whereNull('parent_id')
+//                ->with('children')
+//                ->orderBy('sort_order')
+//                ->get();
 
-            $filteredMenus = $this->filterMenus($menus, $permissions);
+//            $filteredMenus = $this->filterMenus($menus, $permissions);
 
             return response()->json([
                 'success' => true,
                 'message' => 'Permissions fetched successfully.',
-                'data' => [
-                    'permissions' => $permissions,
-                    'menus' => $filteredMenus
-                ]
+//                'data' => [
+//                    'permissions' => $permissions,
+//                    'menus' => $filteredMenus
+//                ]
+                'data' => $permissions
             ]);
 
         } catch (\Throwable $th) {

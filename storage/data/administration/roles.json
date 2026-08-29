@@ -2,12 +2,14 @@
     {
         "name":"Super Admin",
         "code":"RL0001",
+        "description": "This role has all the permissions of the software.",
         "guard_name": "web",
         "all_permissions": true
     },
     {
         "name":"Admin",
         "code":"RL0002",
+        "description": "This role has all the permissions for demo of the software.",
         "guard_name": "web",
         "all_permissions": false
     }

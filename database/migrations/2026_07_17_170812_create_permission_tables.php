@@ -44,6 +44,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('code');
             $table->string('guard_name');
+            $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
             if ($teams || config('permission.testing')) {

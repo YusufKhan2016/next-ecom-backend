@@ -52,6 +52,7 @@ class RoleController extends Controller
         try {
             $data = [
                 'name' => $request->name,
+                'description' => $request->description,
                 'guard_name' => 'web'
             ];
 
@@ -103,7 +104,7 @@ class RoleController extends Controller
                 ->get();
 
             $filteredMenus = $this->filterMenus($menus, $permissions);
-            
+
             return response()->json([
                 'success' => true,
                 'message' => 'Fetched the role data successfully.',
